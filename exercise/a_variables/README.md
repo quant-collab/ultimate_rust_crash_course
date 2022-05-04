@@ -22,17 +22,17 @@
 
 ### Part 2
 
-- [ ] After the `println!(...)`, subtract `ready` from `missiles` like this:
+- [X] After the `println!(...)`, subtract `ready` from `missiles` like this:
   - `missiles = missiles - ready;`
-- [ ] Add a second `println!(...)` to the end:
+- [X] Add a second `println!(...)` to the end:
   - `println!("{} missiles left", missiles);`
-- [ ] Run your program again using cargo
+- [X] Run your program again using cargo
   - Did you run into an error about mutability? Go back and add `mut` at the right spot on the line where you declare `missiles`.
-- [ ] Declare a constant named `STARTING_MISSILES` and set it to `8` (the type is `i32`).
-- [ ] Declare a constant named `READY_AMOUNT` and set it to `2` (also `i32`).
-- [ ] Use the constants to initialize `missiles` and `ready`
+- [X] Declare a constant named `STARTING_MISSILES` and set it to `8` (the type is `i32`).
+- [X] Declare a constant named `READY_AMOUNT` and set it to `2` (also `i32`).
+- [X] Use the constants to initialize `missiles` and `ready`
   - Where did you put the constants?  If you put them inside the `main()` function, try moving them up above `main()` to module scope! 
-- [ ] Nice. Congratulate yourself on a job well done!  You are a Rust programmer now!
+- [X] Nice. Congratulate yourself on a job well done!  You are a Rust programmer now!
 
 ### Extra challenges:
 - [ ] Explicitly annotate the variables with the type `i32`
