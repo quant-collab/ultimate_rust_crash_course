@@ -19,10 +19,31 @@ fn main() {
         // - If arg is "sum", then call the sum() function
         // - If arg is "double", then call the double() function
         // - If arg is anything else, then call the count() function, passing "arg" to it.
-
+        if arg == "sum" {
+            println!("sum");
+            sum();
+        } else if arg == "double" {
+            println!("double");
+            double();
+        } else {
+            println!("count");
+            count(arg);
+        }
 
         // 1b. Now try passing "sum", "double" and "bananas" to the program by adding your argument
         // after "cargo run".  For example "cargo run sum"
+        // input: `1 2 double sum sum`
+        // output:
+        // count
+        //
+        // count
+        //
+        // double
+        // You can double x 0 times until x is larger than 500
+        // sum
+        // The sum is 0
+        // sum
+        // The sum is 0
     }
 }
 
