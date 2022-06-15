@@ -60,17 +60,28 @@ fn sum() {
 }
 
 fn double() {
+    const TARGET: i32 = 1024;
     let mut count = 0;
     let mut x = 1;
     // 3. Use a "while loop" to count how many times you can double the value of `x` (multiply `x`
     // by 2) until `x` is larger than 500.  Increment `count` each time through the loop. Run it
     // with `cargo run double`  Hint: The answer is 9 times.
-    while x <= 500 {
+    while x <= TARGET {
         count += 1;
         x *= 2;
     }
 
-    println!("You can double x {} times until x is larger than 500", count);
+    println!("You can double x {} times until x is larger than {}", count, TARGET);
+    //println!("...log2({}) = {}", TARGET, numeric::math::log2(TARGET));
+    println!("Note: floor(log2({})) + 1 = {}", TARGET, log_2(TARGET) + 1);
+}
+
+// From https://users.rust-lang.org/t/logarithm-of-integers/8506/3
+const fn num_bits<T>() -> usize { std::mem::size_of::<T>() * 8 }
+
+fn log_2(x: i32) -> u32 {
+    assert!(x > 0);
+    num_bits::<i32>() as u32 - x.leading_zeros() - 1
 }
 
 fn count(arg: String) {
@@ -78,7 +89,13 @@ fn count(arg: String) {
     // You will need to count your loops, somehow.  Run it with `cargo run bananas`
     //
     // print!("{} ", arg); // Execute this line 8 times, and then break. `print!` doesn't add a newline.
-
-
+    let mut remaining = 8;
+    loop {
+        println!("{}", arg);
+        remaining -= 1;
+        if remaining <= 0 {
+            break;
+        }
+    }
     println!(); // This will output just a newline at the end for cleanliness.
 }
