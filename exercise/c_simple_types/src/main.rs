@@ -9,7 +9,7 @@ fn main() {
     // The `print_difference` function is defined below the `main` function. It may help if you look
     // at how it is defined.
     //
-    //print_difference( ... );   // Uncomment and finish this line
+    print_difference(coords.0, coords.1); // "Difference between 6.3 and 15 is 8.7"
 
 
     // 2. We want to use the `print_array` function to print coords...but coords isn't an array!
@@ -18,21 +18,34 @@ fn main() {
     //
     //let coords_arr...               // create an array literal out of parts of `coord` here
     //print_array(coords_arr);        // and pass it in here (this line doesn't need to change)
-
+    let coords_arr = [coords.0, coords.1];
+    print_array(coords_arr); // "The coordinates are (6.3, 15)"
 
     let series = [1, 1, 2, 3, 5, 8, 13];
     // 3. Make the `ding` function happy by passing it the value 13 out of the `series` array.
     // Use array indexing.  Done correctly, `cargo run` will produce the additional output
     // "Ding, you found 13!"
-    //
-    //ding(...);
 
+    ding(series[6]); // "Ding, you found 13!"
+
+    // Alternatively, since we can see that 13 is the last element, we can use
+    // various tools to retrieve the last element of the array
+    // Note that [`unwrap`](https://doc.rust-lang.org/std/option/enum.Option.html#method.unwrap)
+    // simply extracts the result (`Some` value from `Option<T>`) or panics if it was `None`.
+    //
+    // [`std::iter::Iterator::last`](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.last)
+    ding(*series.iter().last().unwrap()); // "Ding, you found 13!"
+    // [`std::slice::last`](https://doc.rust-lang.org/std/primitive.slice.html#method.last)
+    ding(*series.last().unwrap()); // "Ding, you found 13!"
+
+    // Better yet, we could scan/search through the array for the value using
+    // [`std::iter::Iterator::find`](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.find)
+    ding(*series.iter().find(|&&x| x == 13).unwrap()); // "Ding, you found 13!"
 
     let mess = ([3, 2], 3.14, [(false, -3), (true, -100)], 5, "candy");
     // 4. Pass the `on_off` function the value `true` from the variable `mess`.  Done correctly,
     // `cargo run` will produce the additional output "Lights are on!" I'll get you started:
-    //
-    //on_off(mess.2 ...);
+    on_off(mess.2[1].0); // "Lights are on!"
 
     // 5.  What a mess -- functions in a binary! Let's get organized!
     //
